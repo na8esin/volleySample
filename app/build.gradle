@@ -54,6 +54,7 @@ dependencies {
     def jUnitVersion = '4.13.2'
     def androidXTestVersion = '1.5.0'
     def testJunitVersion = '1.1.5'
+    def fragment_version = '1.6.1'
 
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -75,4 +76,5 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidXTestVersion"
     androidTestImplementation "androidx.test:rules:$androidXTestVersion"
 
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }

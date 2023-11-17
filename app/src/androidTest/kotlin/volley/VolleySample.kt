@@ -29,14 +29,17 @@ class VolleySample {
 
     private suspend fun getData(context: Context) = suspendCoroutine { cont ->
         val queue = Volley.newRequestQueue(context)
-        val url = "http://www.google.com/"
+        val url = "https://www.google.com/"
 
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
                 cont.resume("Response is: ${response.substring(0, 500)}")
             },
-            { cont.resume("Something went wrong!") })
-
+            {
+                Log.d("VolleySample", it.toString())
+                cont.resume("Something went wrong!")
+            }
+        )
         queue.add(stringRequest)
     }
 }
