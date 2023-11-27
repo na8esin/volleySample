@@ -5,6 +5,9 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
+/**
+ * https://github.com/google-developer-training/advanced-android-testing/blob/end_codelab_1/app/src/test/java/com/example/android/architecture/blueprints/todoapp/LiveDataTestUtil.kt
+ */
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
 fun <T> LiveData<T>.getOrAwaitValue(
     time: Long = 2,

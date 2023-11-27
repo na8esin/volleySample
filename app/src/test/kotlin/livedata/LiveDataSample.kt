@@ -9,6 +9,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.junit.Test
 
+/** だめパターン */
 class LiveDataSample {
     /**
      * Method getMainLooper in android.os.Looper not mocked.

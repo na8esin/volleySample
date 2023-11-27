@@ -4,6 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.volleysample.TopViewModel
 import getOrAwaitValue
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -23,10 +25,17 @@ class LiveDataSample2 {
         topViewModel = TopViewModel()
     }
     @Test
-    fun switchMap() {
+    fun simple() {
         topViewModel.updateMessage("Hello")
 
         val value = topViewModel.message.getOrAwaitValue()
-        println("value: $value")
+        assertThat(value, `is`("Hello"))
     }
+
+    @Test
+    fun switchMap() {
+        topViewModel.updateMessage("Hello")
+
+        val value = topViewModel.transformedMessage.getOrAwaitValue()
+        assertThat(value, `is`("Hello World"))    }
 }
