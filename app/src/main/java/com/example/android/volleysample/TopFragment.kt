@@ -23,7 +23,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.example.android.volleysample.databinding.TopFragmentBinding
+import com.squareup.picasso.Picasso
 
 /**
  * Fragment where the game is played, contains the game logic.
@@ -42,6 +46,29 @@ class TopFragment : Fragment() {
             R.layout.top_fragment,
             container,
             false)
+
+        // なんも表示されない
+        Picasso
+            .get()
+            .load("https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg")
+            .into(binding.imageView);
+
+        Picasso
+            .get()
+            .load("https://media.geeksforgeeks.org/wp-content/uploads/20210101144014/gfglogo.png")
+            .into(binding.imageView2);
+
+        val imageLoader = ImageLoader.Builder(requireContext())
+            .components {
+                add(SvgDecoder.Factory())
+            }
+            .build()
+        val request = ImageRequest.Builder(requireContext())
+            .data("https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg")
+            .target(binding.imageView3)
+            .build()
+        imageLoader.enqueue(request)
+
         return binding.root
     }
 
