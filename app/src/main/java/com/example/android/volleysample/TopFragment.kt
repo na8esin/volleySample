@@ -16,6 +16,7 @@
 
 package com.example.android.volleysample
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -69,6 +70,10 @@ class TopFragment : Fragment() {
             .build()
         imageLoader.enqueue(request)
 
+        if(Build.VERSION.SDK_INT >= 30) {
+            Log.d(TAG, context?.display?.mode?.physicalHeight.toString())
+        }
+
         return binding.root
     }
 
@@ -87,5 +92,10 @@ class TopFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         Log.d("GameFragment", "GameFragment destroyed!")
+    }
+
+    companion object {
+        const val TAG = "TopFragment"
+        fun newInstance() = TopFragment()
     }
 }
