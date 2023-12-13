@@ -70,10 +70,6 @@ class TopFragment : Fragment() {
             .build()
         imageLoader.enqueue(request)
 
-        if(Build.VERSION.SDK_INT >= 30) {
-            Log.d(TAG, context?.display?.mode?.physicalHeight.toString())
-        }
-
         return binding.root
     }
 
